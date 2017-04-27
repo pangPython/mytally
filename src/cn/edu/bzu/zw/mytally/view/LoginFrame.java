@@ -39,6 +39,8 @@ public class LoginFrame extends JFrame{
 	private LoginJTFPwdGBC JTFPwdGBC;
 
 	private LoginJBTNLoginGBC JBTNLoginGBC;
+
+	private LoginBtnListener loginListener;
 	
 	
 	public LoginFrame() throws HeadlessException {
@@ -59,8 +61,14 @@ public class LoginFrame extends JFrame{
 		JTFPwdGBC = new LoginJTFPwdGBC();
 		JBTNLoginGBC = new LoginJBTNLoginGBC();
 		
+		loginListener = new LoginBtnListener();
 		
-		jbtnLogin.addActionListener(new LoginBtnListener());
+		System.out.println(jtfUserName.getText());
+		System.out.println(jtfPassWord.getText());
+		loginListener.setUserName(jtfUserName.getText());
+		loginListener.setPassword(jtfPassWord.getText());
+		
+		jbtnLogin.addActionListener(loginListener);
 		jbtnLogin.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.green));
 		gbLayout = new GridBagLayout();
 		
