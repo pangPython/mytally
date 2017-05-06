@@ -28,6 +28,22 @@ public class LoginFrame extends JFrame{
 	private LoginJLBPassWordGBC JLBPwdGBC = null;
 	
 	private JTextField jtfUserName = null;
+	public JTextField getJtfUserName() {
+		return jtfUserName;
+	}
+
+	public void setJtfUserName(JTextField jtfUserName) {
+		this.jtfUserName = jtfUserName;
+	}
+
+	public JTextField getJtfPassWord() {
+		return jtfPassWord;
+	}
+
+	public void setJtfPassWord(JTextField jtfPassWord) {
+		this.jtfPassWord = jtfPassWord;
+	}
+
 	private JTextField jtfPassWord = null;
 	
 	private JButton jbtnLogin = null;
@@ -40,7 +56,7 @@ public class LoginFrame extends JFrame{
 
 	private LoginJBTNLoginGBC JBTNLoginGBC;
 
-	private LoginBtnListener loginListener;
+	private LoginBtnListener loginListener = null;
 	
 	
 	public LoginFrame() throws HeadlessException {
@@ -61,12 +77,8 @@ public class LoginFrame extends JFrame{
 		JTFPwdGBC = new LoginJTFPwdGBC();
 		JBTNLoginGBC = new LoginJBTNLoginGBC();
 		
-		loginListener = new LoginBtnListener();
+		loginListener = new LoginBtnListener(this);
 		
-		System.out.println(jtfUserName.getText());
-		System.out.println(jtfPassWord.getText());
-		loginListener.setUserName(jtfUserName.getText());
-		loginListener.setPassword(jtfPassWord.getText());
 		
 		jbtnLogin.addActionListener(loginListener);
 		jbtnLogin.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.green));

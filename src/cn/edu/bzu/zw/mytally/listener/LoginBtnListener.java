@@ -4,11 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
-
-import com.jfinal.plugin.activerecord.Db;
-import com.jfinal.plugin.activerecord.Record;
+import javax.swing.JTextField;
 
 import cn.edu.bzu.zw.mytally.model.User;
+import cn.edu.bzu.zw.mytally.view.LoginFrame;
+import cn.edu.bzu.zw.mytally.view.MainFrame;
 
 
 
@@ -19,42 +19,46 @@ import cn.edu.bzu.zw.mytally.model.User;
  */
 public class LoginBtnListener implements ActionListener {
 	
-	private String userName;
-	private String password;
-	
+	private JTextField jtfUserName;
+	private JTextField jtfPassWord;
+	private MainFrame mainFrame;
+	private LoginFrame loginFrame;
 
-	public String getUserName() {
-		return userName;
+
+	public LoginBtnListener(LoginFrame loginFrame) {
+		this.loginFrame = loginFrame;
 	}
 
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		if(login(userName, password)){
-			JOptionPane.showMessageDialog(null, "登录成功");
+		jtfUserName = loginFrame.getJtfUserName();
+		jtfPassWord = loginFrame.getJtfPassWord();
+		if(jtfUserName.getText().isEmpty()){
+			JOptionPane.showMessageDialog(null, "请填写用户名！");
+			return;
 		}
+		if(jtfPassWord.getText().isEmpty()){
+			JOptionPane.showMessageDialog(null, "请填写密码！");
+			return;
+		}
+//		if(login(jtfUserName.getText(), jtfPassWord.getText())){
+//			JOptionPane.showMessageDialog(null, "登录成功");
+//		}
+		loginFrame.setVisible(false);
+		mainFrame = new MainFrame("个人记账系统");
+		mainFrame.setVisible(true);
+		
+		
 	}
 	//登录方法
-	private boolean login(String userName,String password) {
-		System.out.println(userName);
-		System.out.println(password);
-		User user = User.dao.findFirst("select * from tbl_user where username = ? and password = ?",userName,password);
-		
+	private boolean login(String username,String password) {
+		System.out.println("UserName:"+username);
+		System.out.println("Password:"+password);
+		//System.out.println("User.dao"+User.dao);
+		User user = User.dao.findFirst("select * from tbl_user where username = ? and password = ?",username,password);
+		System.out.println("user:"+user);
 		if (user!=null) {
 			return true;
 		}
