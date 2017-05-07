@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import cn.edu.bzu.zw.mytally.model.User;
 import cn.edu.bzu.zw.mytally.view.LoginFrame;
 import cn.edu.bzu.zw.mytally.view.MainFrame;
 
@@ -53,17 +52,17 @@ public class LoginBtnListener implements ActionListener {
 		
 	}
 	//登录方法
-	private boolean login(String username,String password) {
+/*	private boolean login(String username,String password) {
 		System.out.println("UserName:"+username);
 		System.out.println("Password:"+password);
 		//System.out.println("User.dao"+User.dao);
-		User user = User.dao.findFirst("select * from tbl_user where username = ? and password = ?",username,password);
+		//User user = User.dao.findFirst("select * from tbl_user where username = ? and password = ?",username,password);
 		System.out.println("user:"+user);
 		if (user!=null) {
 			return true;
 		}
 		
 		return false;
-	}
+	}*/
 
 }
