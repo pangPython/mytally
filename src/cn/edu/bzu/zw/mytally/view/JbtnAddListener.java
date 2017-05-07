@@ -22,7 +22,8 @@ public class JbtnAddListener implements ActionListener {
 		/*Tally t = new Tally();
 		t.set("userid", 1).set("amount", 100).set("direction", 1).set("note", "买菜").save();
 		*/
-			JOptionPane.showMessageDialog(null, "添加成功！");
+		
+		JOptionPane.showMessageDialog(null, "添加成功！");
 	}
 
 }

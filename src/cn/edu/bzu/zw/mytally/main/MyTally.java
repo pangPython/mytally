@@ -7,7 +7,6 @@ import cn.edu.bzu.zw.mytally.view.MainFrame;
 
 public class MyTally {
 	private static LoginFrame loginFrame = null;
-	private MainFrame mainFrame = null;
 	
 	public static void main(String[] args) {
 		

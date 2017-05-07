@@ -33,6 +33,7 @@ public class MainFrame extends JFrame{
 	}
 
 	public MainFrame(String title) throws HeadlessException {
+		super(title);
 		this.setBounds(300,300,800,700);
 		this.setLayout(new GridLayout(0, 3));
 		addTally = new JButton("添加账目");

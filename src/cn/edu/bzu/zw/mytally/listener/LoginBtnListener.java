@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import cn.edu.bzu.zw.mytally.dao.UserDao;
 import cn.edu.bzu.zw.mytally.view.LoginFrame;
 import cn.edu.bzu.zw.mytally.view.MainFrame;
 
@@ -42,27 +43,24 @@ public class LoginBtnListener implements ActionListener {
 			JOptionPane.showMessageDialog(null, "请填写密码！");
 			return;
 		}
-//		if(login(jtfUserName.getText(), jtfPassWord.getText())){
-//			JOptionPane.showMessageDialog(null, "登录成功");
-//		}
-		loginFrame.setVisible(false);
-		mainFrame = new MainFrame("个人记账系统");
-		mainFrame.setVisible(true);
-		
+		if(login(jtfUserName.getText(), jtfPassWord.getText())){
+			JOptionPane.showMessageDialog(null, "登录成功");
+			loginFrame.setVisible(false);
+			mainFrame = new MainFrame("个人记账系统");
+			mainFrame.setVisible(true);
+		}
 		
 	}
 	//登录方法
-/*	private boolean login(String username,String password) {
+	private boolean login(String username,String password) {
 		System.out.println("UserName:"+username);
 		System.out.println("Password:"+password);
-		//System.out.println("User.dao"+User.dao);
-		//User user = User.dao.findFirst("select * from tbl_user where username = ? and password = ?",username,password);
-		System.out.println("user:"+user);
-		if (user!=null) {
+		UserDao userDao = new UserDao();
+		if(userDao.findUserByNameAndPwd(username, password)!=null){
 			return true;
 		}
 		
 		return false;
-	}*/
+	}
 
 }
