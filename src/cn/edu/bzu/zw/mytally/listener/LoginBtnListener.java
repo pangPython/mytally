@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import cn.edu.bzu.zw.mytally.dao.UserDao;
+import cn.edu.bzu.zw.mytally.dao.UserDaoImpl;
+import cn.edu.bzu.zw.mytally.service.UserService;
 import cn.edu.bzu.zw.mytally.view.LoginFrame;
 import cn.edu.bzu.zw.mytally.view.MainFrame;
 
@@ -55,8 +57,8 @@ public class LoginBtnListener implements ActionListener {
 	private boolean login(String username,String password) {
 		System.out.println("UserName:"+username);
 		System.out.println("Password:"+password);
-		UserDao userDao = new UserDao();
-		if(userDao.findUserByNameAndPwd(username, password)!=null){
+		UserService userService = new UserService();
+		if(userService.login(username, password)){
 			return true;
 		}
 		
