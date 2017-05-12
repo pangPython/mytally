@@ -5,12 +5,15 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import org.apache.commons.io.FileUtils;
 
 import cn.edu.bzu.zw.mytally.service.UserService;
 import cn.edu.bzu.zw.mytally.view.LoginFrame;
@@ -42,6 +45,7 @@ public class LoginBtnListener implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		jtfUserName = loginFrame.getJtfUserName();
 		jtfPassWord = loginFrame.getJtfPassWord();
+		String uuid = null;
 		if(jtfUserName.getText().isEmpty()){
 			JOptionPane.showMessageDialog(null, "请填写用户名！");
 			return;
@@ -50,39 +54,34 @@ public class LoginBtnListener implements ActionListener {
 			JOptionPane.showMessageDialog(null, "请填写密码！");
 			return;
 		}
-		if(login(jtfUserName.getText(), jtfPassWord.getText())){
+		if((uuid = login(jtfUserName.getText(), jtfPassWord.getText())) != null){
 			//设置本地文件存储用户信息
 			File file = new File("user.dat");
-			FileOutputStream fileOutputStream = null;
-			OutputStreamWriter outputStreamWriter;
 			try {
-				fileOutputStream = new FileOutputStream(file);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-			try {
-				outputStreamWriter = new OutputStreamWriter(fileOutputStream, "UTF-8");
-			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
+				FileUtils.writeStringToFile(file, uuid, "UTF-8", false);
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			JOptionPane.showMessageDialog(null, "登录成功");
 			loginFrame.setVisible(false);
 			mainFrame = new MainFrame("个人记账系统");
 			mainFrame.setVisible(true);
+		}else{
+			JOptionPane.showMessageDialog(null, "登录失败！");
+			return;
 		}
 		
 	}
 	//登录方法
-	private boolean login(String username,String password) {
+	private String login(String username,String password) {
 		System.out.println("UserName:"+username);
 		System.out.println("Password:"+password);
 		UserService userService = new UserService();
-		if(userService.login(username, password)){
-			return true;
+		String uuid = null;
+		if(userService.login(username, password) != null){
+			uuid = userService.login(username, password);
 		}
-		
-		return false;
+		return uuid;
 	}
 
 }
