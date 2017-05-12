@@ -20,10 +20,10 @@ public class TallyDaoImpl extends BaseDao implements TallyDao {
 	@Override
 	public boolean addTally(Tally tally) {
 		boolean rtn = false;
-		sql = "insert into tally(userid,direction,amount,note) values(?,?,?,?)";
+		sql = "insert into tbl_tally(useruuid,direction,amount,note) values(?,?,?,?)";
 		int result = 0;
 		try {
-			result = qr.update(conn,sql,new BeanHandler<>(Tally.class),tally.getUserid(),tally.getDirection(),tally.getAmount(),tally.getNote());
+			result = qr.update(conn,sql,tally.getUseruuid(),tally.getDirection(),tally.getAmount(),tally.getNote());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

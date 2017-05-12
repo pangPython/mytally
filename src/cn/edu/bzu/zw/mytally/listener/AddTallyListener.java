@@ -6,7 +6,13 @@ import java.awt.event.ActionListener;
 import cn.edu.bzu.zw.mytally.view.AddTallyFrame;
 
 public class AddTallyListener implements ActionListener {
-	AddTallyFrame addTallyFrame = null;
+	private AddTallyFrame addTallyFrame = null;
+	
+	public AddTallyListener() {
+	}
+
+
+
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {

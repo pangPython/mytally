@@ -4,7 +4,10 @@ import java.sql.Timestamp;
 
 public class Tally {
 	private int id;
-	private int userid;
+	private String useruuid;
+	public void setUseruuid(String useruuid) {
+		this.useruuid = useruuid;
+	}
 	private int direction;
 	private int amount;
 	private String note;
@@ -15,11 +18,9 @@ public class Tally {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getUserid() {
-		return userid;
-	}
-	public void setUserid(int userid) {
-		this.userid = userid;
+
+	public String getUseruuid() {
+		return useruuid;
 	}
 	public int getDirection() {
 		return direction;

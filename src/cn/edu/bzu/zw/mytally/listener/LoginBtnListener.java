@@ -56,7 +56,7 @@ public class LoginBtnListener implements ActionListener {
 		}
 		if((uuid = login(jtfUserName.getText(), jtfPassWord.getText())) != null){
 			//设置本地文件存储用户信息
-			File file = new File("user.dat");
+			File file = new File("temp/user.dat");
 			try {
 				FileUtils.writeStringToFile(file, uuid, "UTF-8", false);
 			} catch (IOException e) {
@@ -66,6 +66,7 @@ public class LoginBtnListener implements ActionListener {
 			loginFrame.setVisible(false);
 			mainFrame = new MainFrame("个人记账系统");
 			mainFrame.setVisible(true);
+			
 		}else{
 			JOptionPane.showMessageDialog(null, "登录失败！");
 			return;
