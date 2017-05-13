@@ -5,6 +5,10 @@ import java.awt.event.ActionListener;
 
 import cn.edu.bzu.zw.mytally.view.AddTallyFrame;
 
+/**
+ * @author P7XXDMX
+ *
+ */
 public class AddTallyListener implements ActionListener {
 	private AddTallyFrame addTallyFrame = null;
 	
