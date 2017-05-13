@@ -1,6 +1,5 @@
 package cn.edu.bzu.zw.mytally.view;
 
-import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 
 import javax.swing.JFrame;

@@ -23,5 +23,7 @@ public class ModelTest {
 		
 		System.out.println(user.getUsername()+":"+user.getPassword());
 		
+		
+		
 	}
 }

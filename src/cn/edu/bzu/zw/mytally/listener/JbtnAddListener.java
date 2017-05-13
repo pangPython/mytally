@@ -1,4 +1,4 @@
-package cn.edu.bzu.zw.mytally.view;
+package cn.edu.bzu.zw.mytally.listener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +13,7 @@ import org.apache.commons.io.FileUtils;
 
 import cn.edu.bzu.zw.mytally.bean.Tally;
 import cn.edu.bzu.zw.mytally.service.TallyService;
+import cn.edu.bzu.zw.mytally.view.AddTallyFrame;
 
 public class JbtnAddListener implements ActionListener {
 

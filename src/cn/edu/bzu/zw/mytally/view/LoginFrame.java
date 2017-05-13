@@ -11,8 +11,11 @@ import javax.swing.JTextField;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 
 import cn.edu.bzu.zw.mytally.listener.LoginBtnListener;
+import cn.edu.bzu.zw.mytally.view.gbc.LoginJBTNLoginGBC;
 import cn.edu.bzu.zw.mytally.view.gbc.LoginJLBPassWordGBC;
 import cn.edu.bzu.zw.mytally.view.gbc.LoginJLBUserNameGBC;
+import cn.edu.bzu.zw.mytally.view.gbc.LoginJTFPwdGBC;
+import cn.edu.bzu.zw.mytally.view.gbc.LoginJTFUserNameGBC;
 
 public class LoginFrame extends JFrame{
 
