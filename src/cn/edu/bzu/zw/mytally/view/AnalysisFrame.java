@@ -3,13 +3,17 @@ package cn.edu.bzu.zw.mytally.view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.swing.JPanel;
 
+import org.apache.commons.io.FileUtils;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartRenderingInfo;
@@ -29,9 +33,16 @@ import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RectangleInsets;
 import org.jfree.ui.RefineryUtilities;
 
+import cn.edu.bzu.zw.mytally.bean.Tally;
+import cn.edu.bzu.zw.mytally.service.TallyService;
+
 public class AnalysisFrame extends ApplicationFrame {
 
 	private static final long serialVersionUID = -4172191391806537567L;
+	
+	
+	private TallyService tallyService = new TallyService();;
+
 	public AnalysisFrame(String s) {
 	        super(s);
 	        XYDataset xydataset = createDataset();
@@ -42,7 +53,7 @@ public class AnalysisFrame extends ApplicationFrame {
 	        setContentPane(chartpanel);
 	        this.setSize(600, 600);
 	    }
-	private static JFreeChart createChart(XYDataset xydataset) {
+	private JFreeChart createChart(XYDataset xydataset) {
 		 //创建主题样式  
 	       StandardChartTheme standardChartTheme=new StandardChartTheme("CN");  
 	       //设置标题字体  
@@ -75,58 +86,45 @@ public class AnalysisFrame extends ApplicationFrame {
 	        dateaxis.setDateFormatOverride(new SimpleDateFormat("MMM-yyyy"));
 	        return jfreechart;
 	    }
-	private static XYDataset createDataset() {
-			//Comparable<T>
-	        TimeSeries timeseries = new TimeSeries("支出","http://www.bzu.edu.cn","");
-	        timeseries.add(new Month(2, 2001), 181.80000000000001D);
-	        timeseries.add(new Month(3, 2001), 167.30000000000001D);
-	        timeseries.add(new Month(4, 2001), 153.80000000000001D);
-	        timeseries.add(new Month(5, 2001), 167.59999999999999D);
-	        timeseries.add(new Month(6, 2001), 158.80000000000001D);
-	        timeseries.add(new Month(7, 2001), 148.30000000000001D);
-	        timeseries.add(new Month(8, 2001), 153.90000000000001D);
-	        timeseries.add(new Month(9, 2001), 142.69999999999999D);
-	        timeseries.add(new Month(10, 2001), 123.2D);
-	        timeseries.add(new Month(11, 2001), 131.80000000000001D);
-	        timeseries.add(new Month(12, 2001), 139.59999999999999D);
-	        timeseries.add(new Month(1, 2002), 142.90000000000001D);
-	        timeseries.add(new Month(2, 2002), 138.69999999999999D);
-	        timeseries.add(new Month(3, 2002), 137.30000000000001D);
-	        timeseries.add(new Month(4, 2002), 143.90000000000001D);
-	        timeseries.add(new Month(5, 2002), 139.80000000000001D);
-	        timeseries.add(new Month(6, 2002), 137D);
-	        timeseries.add(new Month(7, 2002), 132.80000000000001D);
-	        TimeSeries timeseries1 = new TimeSeries("收入",
-	                org.jfree.data.time.Month.class);
-	        timeseries1.add(new Month(2, 2001), 129.59999999999999D);
-	        timeseries1.add(new Month(3, 2001), 123.2D);
-	        timeseries1.add(new Month(4, 2001), 117.2D);
-	        timeseries1.add(new Month(5, 2001), 124.09999999999999D);
-	        timeseries1.add(new Month(6, 2001), 122.59999999999999D);
-	        timeseries1.add(new Month(7, 2001), 119.2D);
-	        timeseries1.add(new Month(8, 2001), 116.5D);
-	        timeseries1.add(new Month(9, 2001), 112.7D);
-	        timeseries1.add(new Month(10, 2001), 101.5D);
-	        timeseries1.add(new Month(11, 2001), 106.09999999999999D);
-	        timeseries1.add(new Month(12, 2001), 110.3D);
-	        timeseries1.add(new Month(1, 2002), 111.7D);
-	        timeseries1.add(new Month(2, 2002), 111D);
-	        timeseries1.add(new Month(3, 2002), 109.59999999999999D);
-	        timeseries1.add(new Month(4, 2002), 113.2D);
-	        timeseries1.add(new Month(5, 2002), 111.59999999999999D);
-	        timeseries1.add(new Month(6, 2002), 108.8D);
-	        timeseries1.add(new Month(7, 2002), 101.59999999999999D);
+	private  XYDataset createDataset() {
+		String uid = null;
+		try {
+			//获取用户uuid
+			uid = FileUtils.readFileToString(new File("temp/user.dat"), "UTF-8");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		//支出列表
+		List<Tally> outList = new ArrayList<>();
+		outList = tallyService.getoutList(uid);
+		//收入列表
+		List<Tally> inList = new ArrayList<>();
+		inList = tallyService.getinList(uid);
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMM");
+		TimeSeries timeseries = new TimeSeries("支出","http://www.bzu.edu.cn","");
+	        for (Tally tally : outList) {
+	        	System.out.println(simpleDateFormat.format(tally.getTallytime()));
+	        	System.out.println(tally.getTallytime());
+	        	System.out.println(Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(4, 6)));
+//	        	timeseries.add();
+	        	timeseries.add(new Month(Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(4, 6)), Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(0, 3))), tally.getAmount());
+			}
+	        TimeSeries timeseries1 = new TimeSeries("收入","http://www.bzu.edu.cn","");
+	        for (Tally tally : inList) {
+	        	System.out.println(tally.getTallytime().getDay());
+	        	timeseries1.add(new Month(Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(4, 6)), Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(0, 3))), tally.getAmount());
+			}
 	        TimeSeriesCollection timeseriescollection = new TimeSeriesCollection();
 	        timeseriescollection.addSeries(timeseries);
 	        timeseriescollection.addSeries(timeseries1);
 	        return timeseriescollection;
 	    }
-	public static JPanel createDemoPanel() {
+	public  JPanel createDemoPanel() {
 	        JFreeChart jfreechart = createChart(createDataset());
 	        return new ChartPanel(jfreechart);
 	    }
 	// 根据JFreeChart对象生成对应的图片
-	    public static String generateLineChart(HttpSession session, PrintWriter pw) {
+	    public  String generateLineChart(HttpSession session, PrintWriter pw) {
 	        String filename = null;
 	        JFreeChart chart = createChart(createDataset());
 	        // chart.setBackgroundPaint(java.awt.Color.white);

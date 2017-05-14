@@ -52,4 +52,30 @@ public class TallyDaoImpl extends BaseDao implements TallyDao {
 		return null;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public List<Tally> getinList(String uid) {
+		sql = "select * from tbl_tally where direction = 1 and useruuid = ?";
+		List<Tally> list = new ArrayList<>();
+		try {
+			list = (List) qr.query(conn, sql, new BeanListHandler(Tally.class),uid);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public List<Tally> getoutList(String uid) {
+		sql = "select * from tbl_tally where direction = 0 and useruuid = ?";
+		List<Tally> list = new ArrayList<>();
+		try {
+			list = (List) qr.query(conn, sql, new BeanListHandler(Tally.class),uid);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }

@@ -1,6 +1,5 @@
 package cn.edu.bzu.zw.mytally.bean;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 public class Tally {

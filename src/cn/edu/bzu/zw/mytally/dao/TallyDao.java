@@ -1,9 +1,6 @@
 package cn.edu.bzu.zw.mytally.dao;
 
-import java.sql.Connection;
 import java.util.List;
-
-import org.apache.commons.dbutils.QueryRunner;
 
 import cn.edu.bzu.zw.mytally.bean.Tally;
 
@@ -33,7 +30,17 @@ public interface TallyDao {
 	 * @return
 	 */
 	public Tally getTallyById(int id);
+	/**
+	 * 获取收入列表
+	 * @param uid
+	 * @return
+	 */
+	public List<Tally> getinList(String uid);
 	
-	
-	
+	/**
+	 * 获取支出列表
+	 * @param uid
+	 * @return
+	 */
+	public List<Tally> getoutList(String uid);
 }

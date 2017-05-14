@@ -17,4 +17,10 @@ public class TallyService {
 		return tallyDaoImpl.getTallys();
 	}
 	
+	public List<Tally> getoutList(String uid){
+		return tallyDaoImpl.getoutList(uid);
+	}
+	public List<Tally> getinList(String uid){
+		return tallyDaoImpl.getinList(uid);
+	}
 }
