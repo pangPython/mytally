@@ -10,7 +10,7 @@ public class DB {
 		Connection conn = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mytally","root","root");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mytally?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull","root","root");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

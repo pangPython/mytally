@@ -2,12 +2,15 @@ package cn.edu.bzu.zw.mytally.view;
 
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import cn.edu.bzu.zw.mytally.listener.AboutFrameListener;
 import cn.edu.bzu.zw.mytally.listener.AddTallyListener;
 import cn.edu.bzu.zw.mytally.listener.AllTallyListener;
+import cn.edu.bzu.zw.mytally.listener.StatisticalAnalysisListener;
 
 
 
@@ -23,7 +26,8 @@ public class MainFrame extends JFrame{
 	private JButton about;
 	private AddTallyListener addTallyListener;
 	private AllTallyListener allTallyListener;
-	
+	private AboutFrameListener aboutFrameListener;
+	private StatisticalAnalysisListener statisticalAnalysisListener;
 	/**
 	 * 
 	 */
@@ -47,8 +51,13 @@ public class MainFrame extends JFrame{
 		allTally.addActionListener(allTallyListener);
 		
 		statisticalAnalysis = new JButton("统计分析");
+		statisticalAnalysisListener = new StatisticalAnalysisListener();
+		statisticalAnalysis.addActionListener(statisticalAnalysisListener);
+		
 		exportExcel = new JButton("导出表格");
 		about = new JButton("关于");
+		aboutFrameListener = new AboutFrameListener();
+		about.addActionListener(aboutFrameListener);
 		this.getContentPane().add(addTally);
 		this.getContentPane().add(allTally);
 		this.getContentPane().add(statisticalAnalysis);

@@ -12,5 +12,8 @@
 	<classpathentry kind="lib" path="C:/tools/commons-dbutils-1.6-tests.jar"/>
 	<classpathentry kind="lib" path="C:/tools/commons-dbutils-1.6-test-sources.jar"/>
 	<classpathentry kind="lib" path="C:/Users/P7XXDMX/Downloads/commons-io-2.5-bin/commons-io-2.5/commons-io-2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/P7XXDMX/Downloads/jfreechart-1.0.19/lib/jcommon-1.0.23.jar"/>
+	<classpathentry kind="lib" path="C:/Users/P7XXDMX/Downloads/jfreechart-1.0.19/lib/jfreechart-1.0.19.jar"/>
+	<classpathentry kind="lib" path="C:/Users/P7XXDMX/Downloads/jfreechart-1.0.19/lib/servlet.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,9 +1,10 @@
 package cn.edu.bzu.zw.mytally.dao.impl;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import cn.edu.bzu.zw.mytally.bean.Tally;
 import cn.edu.bzu.zw.mytally.dao.BaseDao;
@@ -33,9 +34,17 @@ public class TallyDaoImpl extends BaseDao implements TallyDao {
 		return rtn;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Tally> getTallys() {
-		return null;
+		sql = "select * from tbl_tally";
+		List<Tally> list = new ArrayList<>();
+		try {
+			list = (List) qr.query(conn, sql, new BeanListHandler(Tally.class));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	@Override

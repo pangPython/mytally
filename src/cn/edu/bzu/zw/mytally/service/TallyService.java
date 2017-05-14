@@ -1,5 +1,7 @@
 package cn.edu.bzu.zw.mytally.service;
 
+import java.util.List;
+
 import cn.edu.bzu.zw.mytally.bean.Tally;
 import cn.edu.bzu.zw.mytally.dao.impl.TallyDaoImpl;
 
@@ -9,6 +11,10 @@ public class TallyService {
 	
 	public boolean add(Tally tally){
 		return tallyDaoImpl.addTally(tally);
+	}
+
+	public List<Tally> getTallys() {
+		return tallyDaoImpl.getTallys();
 	}
 	
 }

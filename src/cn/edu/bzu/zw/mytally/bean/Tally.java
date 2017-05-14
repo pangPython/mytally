@@ -1,6 +1,7 @@
 package cn.edu.bzu.zw.mytally.bean;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class Tally {
 	private int id;
@@ -11,7 +12,7 @@ public class Tally {
 	private int direction;
 	private int amount;
 	private String note;
-	private Timestamp tallytime;
+	private Date tallytime;
 	public int getId() {
 		return id;
 	}
@@ -40,12 +41,13 @@ public class Tally {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	public Timestamp getTallytime() {
+	public Date getTallytime() {
 		return tallytime;
 	}
-	public void setTallytime(Timestamp tallytime) {
+	public void setTallytime(Date tallytime) {
 		this.tallytime = tallytime;
 	}
+
 	
 	
 }

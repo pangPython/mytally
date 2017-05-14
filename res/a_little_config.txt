@@ -1,4 +1,0 @@
-jdbcUrl = jdbc:mysql://localhost/mytally?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
-user = root
-password = root
-devMode = true

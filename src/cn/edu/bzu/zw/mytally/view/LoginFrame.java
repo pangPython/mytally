@@ -74,6 +74,10 @@ public class LoginFrame extends JFrame{
 		jtfPassWord = new JTextField(8);
 		jbtnLogin = new JButton("登录");
 		
+		jtfUserName.setText("admin");
+		jtfPassWord.setText("admin");
+		
+		
 		JLBUserNameGBC = new LoginJLBUserNameGBC();
 		JLBPwdGBC = new LoginJLBPassWordGBC();
 		JTFUserNameGBC = new LoginJTFUserNameGBC();
