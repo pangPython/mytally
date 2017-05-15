@@ -26,6 +26,7 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.chart.servlet.ServletUtilities;
 import org.jfree.data.time.Month;
+import org.jfree.data.time.Second;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
@@ -103,16 +104,17 @@ public class AnalysisFrame extends ApplicationFrame {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMM");
 		TimeSeries timeseries = new TimeSeries("支出","http://www.bzu.edu.cn","");
 	        for (Tally tally : outList) {
-	        	System.out.println(simpleDateFormat.format(tally.getTallytime()));
-	        	System.out.println(tally.getTallytime());
-	        	System.out.println(Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(4, 6)));
-//	        	timeseries.add();
-	        	timeseries.add(new Month(Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(4, 6)), Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(0, 3))), tally.getAmount());
+//	        	System.out.println(simpleDateFormat.format(tally.getTallytime()));
+//	        	System.out.println(tally.getTallytime());
+//	        	System.out.println(Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(4, 6)));
+	        	timeseries.add(new Second(tally.getTallytime()),tally.getAmount());
+	        	//timeseries.add(new Month(Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(4, 6)), Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(0, 3))), tally.getAmount());
 			}
 	        TimeSeries timeseries1 = new TimeSeries("收入","http://www.bzu.edu.cn","");
 	        for (Tally tally : inList) {
-	        	System.out.println(tally.getTallytime().getDay());
-	        	timeseries1.add(new Month(Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(4, 6)), Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(0, 3))), tally.getAmount());
+	        	//System.out.println(tally.getTallytime().getDay());
+	        	timeseries1.add(new Second(tally.getTallytime()),tally.getAmount());
+//	        	timeseries1.add(new Month(Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(4, 6)), Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(0, 3))), tally.getAmount());
 			}
 	        TimeSeriesCollection timeseriescollection = new TimeSeriesCollection();
 	        timeseriescollection.addSeries(timeseries);

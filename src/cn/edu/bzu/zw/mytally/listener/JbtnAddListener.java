@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
 
@@ -27,7 +28,8 @@ public class JbtnAddListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		//获取当前时间
-		Timestamp timestamp = new Timestamp(System.currentTimeMillis());	
+		Date time = new Date(System.currentTimeMillis());
+		//Timestamp timestamp = new Timestamp();	
 		//获取当前用户的UUID
 		String uuid = null;
 		try {
@@ -47,7 +49,7 @@ public class JbtnAddListener implements ActionListener {
 		tally.setAmount(amount);
 		tally.setDirection(direction);
 		tally.setNote(note);
-		tally.setTallytime(timestamp);
+		tally.setTallytime(time);
 		tally.setUseruuid(uuid);
 		TallyService service = new TallyService();
 		if(service.add(tally)){

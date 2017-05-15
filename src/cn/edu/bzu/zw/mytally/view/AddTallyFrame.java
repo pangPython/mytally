@@ -106,7 +106,7 @@ public class AddTallyFrame extends JFrame {
 		addTallyPanel.add(jtfNote);
 		addTallyPanel.add(jbtnAdd);
 		this.add(addTallyPanel);
-		this.pack();
+//		this.pack();
 	}
 	
 	
