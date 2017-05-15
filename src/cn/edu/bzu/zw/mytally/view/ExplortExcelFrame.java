@@ -1,12 +1,20 @@
 package cn.edu.bzu.zw.mytally.view;
 
-import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import cn.edu.bzu.zw.mytally.bean.Tally;
+import cn.edu.bzu.zw.mytally.service.TallyService;
+import cn.edu.bzu.zw.mytally.utils.MyPOI;
 
 public class ExplortExcelFrame extends JFrame {
 
+	private TallyService tallyService = null;
+	
 	/**
 	 * 
 	 */
@@ -19,7 +27,16 @@ public class ExplortExcelFrame extends JFrame {
 
 	public ExplortExcelFrame(String title) throws HeadlessException {
 		super(title);
-		// TODO Auto-generated constructor stub
+		tallyService = new TallyService();
+		List<Tally> list = new ArrayList<>();
+		list = tallyService.getTallys();
+		String path = null;
+		if((path = MyPOI.exportList2Excel(list))!=null){
+			JOptionPane.showMessageDialog(null, path);
+		}else{
+			JOptionPane.showMessageDialog(null, "导出失败！");
+			
+		}
 	}
 	
 }

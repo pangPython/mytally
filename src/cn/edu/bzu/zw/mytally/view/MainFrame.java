@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import cn.edu.bzu.zw.mytally.listener.AboutFrameListener;
 import cn.edu.bzu.zw.mytally.listener.AddTallyListener;
 import cn.edu.bzu.zw.mytally.listener.AllTallyListener;
+import cn.edu.bzu.zw.mytally.listener.ExportExcelListener;
 import cn.edu.bzu.zw.mytally.listener.StatisticalAnalysisListener;
 
 
@@ -28,6 +29,7 @@ public class MainFrame extends JFrame{
 	private AllTallyListener allTallyListener;
 	private AboutFrameListener aboutFrameListener;
 	private StatisticalAnalysisListener statisticalAnalysisListener;
+	private ExportExcelListener excelListener;
 	/**
 	 * 
 	 */
@@ -55,6 +57,9 @@ public class MainFrame extends JFrame{
 		statisticalAnalysis.addActionListener(statisticalAnalysisListener);
 		
 		exportExcel = new JButton("导出表格");
+		excelListener = new ExportExcelListener();
+		exportExcel.addActionListener(excelListener);
+		
 		about = new JButton("关于");
 		aboutFrameListener = new AboutFrameListener();
 		about.addActionListener(aboutFrameListener);
