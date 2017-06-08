@@ -1,5 +1,7 @@
 package cn.edu.bzu.zw.mytally.main;
 
+import javax.swing.UIManager;
+
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import cn.edu.bzu.zw.mytally.view.LoginFrame;
@@ -23,9 +25,8 @@ public class MyTally {
 			//设置本属性将改变窗口边框样式定义
 	        BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.generalNoTranslucencyShadow;
 			org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
-			
+			UIManager.put("RootPane.setupButtonVisible", false);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		loginFrame = new LoginFrame("个人记账系统—登录");

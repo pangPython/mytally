@@ -2,9 +2,13 @@ package cn.edu.bzu.zw.mytally.view;
 
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
+import java.awt.Insets;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import cn.edu.bzu.zw.mytally.listener.AboutFrameListener;
 import cn.edu.bzu.zw.mytally.listener.AddTallyListener;
@@ -26,6 +30,8 @@ public class MainFrame extends JFrame{
 	private JButton statisticalAnalysis = null;//统计分析
 	private JButton exportExcel = null;//导出excel
 	private JButton about;
+	
+	
 	private AddTallyListener addTallyListener;
 	private AllTallyListener allTallyListener;
 	private AboutFrameListener aboutFrameListener;
@@ -44,12 +50,12 @@ public class MainFrame extends JFrame{
 		super(title);
 		this.setBounds(300,300,800,700);
 		this.setLayout(new GridLayout(0, 3));
+//		ImageIcon addTallyPic = new ImageIcon("/res/dog1.jpg");
 		addTally = new JButton("添加账目");
 		addTallyListener  = new AddTallyListener(); 
 		allTallyListener = new AllTallyListener();
-		
 		addTally.addActionListener(addTallyListener);
-		
+		addTally.setIcon(new ImageIcon("res/dog1.jpg"));
 		allTally = new JButton("账目清单");
 		allTally.addActionListener(allTallyListener);
 		
