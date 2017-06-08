@@ -21,14 +21,14 @@ public class AboutFrame extends JFrame {
 
 	public AboutFrame(String title) throws HeadlessException {
 		super(title);
-		 ImageIcon img = new ImageIcon("res/1.jpg");//这是背景图片   
+		 ImageIcon img = new ImageIcon("res/about.png");//这是背景图片   
 	     JLabel imgLabel = new JLabel(img);//将背景图放在标签里。   
 	     this.getLayeredPane().add(imgLabel, new Integer(Integer.MIN_VALUE));//注意这里是关键，将背景标签添加到jfram的     LayeredPane面板里。
 	     imgLabel.setBounds(0,0,img.getIconWidth(), img.getIconHeight());//设置背景标签的位置   
 	     Container cp=this.getContentPane();   
 	     cp.setLayout(null);      //这里选择绝对布局管理器，对于边界布局管理器，放入控件后，无法显示背景图片；因为将整个面板都填充满了；
 	     ((JPanel)cp).setOpaque(false); //这样就能显示出背景图片出来了。
-	     this.setSize(300,300);
+	     this.setSize(400,400);
 	}
 	
 }

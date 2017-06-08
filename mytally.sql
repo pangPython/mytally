@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-05-16 07:39:10
+Date: 2017-05-16 22:24:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `tbl_tally` (
   `note` text,
   `tallytime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tbl_tally
@@ -37,8 +37,9 @@ INSERT INTO `tbl_tally` VALUES ('2', 'f65bfd13-7737-461a-8874-67655b16a8c4', '1'
 INSERT INTO `tbl_tally` VALUES ('3', 'f65bfd13-7737-461a-8874-67655b16a8c4', '0', '12', '123', '2017-05-14 15:08:54');
 INSERT INTO `tbl_tally` VALUES ('4', 'f65bfd13-7737-461a-8874-67655b16a8c4', '1', '111', '123', '2017-05-14 15:08:55');
 INSERT INTO `tbl_tally` VALUES ('5', 'f65bfd13-7737-461a-8874-67655b16a8c4', '0', '1', '公交', '2017-05-14 15:08:57');
-INSERT INTO `tbl_tally` VALUES ('6', 'f65bfd13-7737-461a-8874-67655b16a8c4', '0', '123', '逛街', '0000-00-00 00:00:00');
-INSERT INTO `tbl_tally` VALUES ('7', 'f65bfd13-7737-461a-8874-67655b16a8c4', '1', '123', '发传单', '0000-00-00 00:00:00');
+INSERT INTO `tbl_tally` VALUES ('6', 'f65bfd13-7737-461a-8874-67655b16a8c4', '0', '123', '逛街', '2017-05-14 15:08:57');
+INSERT INTO `tbl_tally` VALUES ('7', 'f65bfd13-7737-461a-8874-67655b16a8c4', '1', '123', '发传单', '2017-05-14 15:08:57');
+INSERT INTO `tbl_tally` VALUES ('8', 'f65bfd13-7737-461a-8874-67655b16a8c4', '1', '124', '提出', '2017-05-14 15:08:57');
 
 -- ----------------------------
 -- Table structure for `tbl_user`
