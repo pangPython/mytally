@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import org.apache.commons.io.FileUtils;
@@ -25,19 +26,25 @@ import org.jfree.chart.entity.StandardEntityCollection;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.chart.servlet.ServletUtilities;
-import org.jfree.data.time.Month;
 import org.jfree.data.time.Second;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
-import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RectangleInsets;
 import org.jfree.ui.RefineryUtilities;
 
 import cn.edu.bzu.zw.mytally.bean.Tally;
 import cn.edu.bzu.zw.mytally.service.TallyService;
 
-public class AnalysisFrame extends ApplicationFrame {
+/**
+ *  @package cn.edu.bzu.zw.mytally.view
+ *  @project MyTally
+ *	@author zhangwei
+ * 	@time 2017年6月8日 下午3:56:29
+ * 	统计分析 页面窗口 使用JFreechart把数据库的数据显示在折线图上
+ * 
+ */
+public class AnalysisFrame extends JFrame {
 
 	private static final long serialVersionUID = -4172191391806537567L;
 	
@@ -52,6 +59,7 @@ public class AnalysisFrame extends ApplicationFrame {
 	        chartpanel.setPreferredSize(new Dimension(500, 270));
 	        chartpanel.setMouseZoomable(true, false);
 	        setContentPane(chartpanel);
+	        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	        this.setSize(600, 600);
 	    }
 	private JFreeChart createChart(XYDataset xydataset) {
@@ -101,20 +109,13 @@ public class AnalysisFrame extends ApplicationFrame {
 		//收入列表
 		List<Tally> inList = new ArrayList<>();
 		inList = tallyService.getinList(uid);
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMM");
 		TimeSeries timeseries = new TimeSeries("支出","http://www.bzu.edu.cn","");
 	        for (Tally tally : outList) {
-//	        	System.out.println(simpleDateFormat.format(tally.getTallytime()));
-//	        	System.out.println(tally.getTallytime());
-//	        	System.out.println(Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(4, 6)));
 	        	timeseries.add(new Second(tally.getTallytime()),tally.getAmount());
-	        	//timeseries.add(new Month(Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(4, 6)), Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(0, 3))), tally.getAmount());
 			}
 	        TimeSeries timeseries1 = new TimeSeries("收入","http://www.bzu.edu.cn","");
 	        for (Tally tally : inList) {
-	        	//System.out.println(tally.getTallytime().getDay());
 	        	timeseries1.add(new Second(tally.getTallytime()),tally.getAmount());
-//	        	timeseries1.add(new Month(Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(4, 6)), Integer.parseInt(simpleDateFormat.format(tally.getTallytime()).substring(0, 3))), tally.getAmount());
 			}
 	        TimeSeriesCollection timeseriescollection = new TimeSeriesCollection();
 	        timeseriescollection.addSeries(timeseries);

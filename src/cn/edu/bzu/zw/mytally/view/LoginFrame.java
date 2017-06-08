@@ -17,12 +17,16 @@ import cn.edu.bzu.zw.mytally.view.gbc.LoginJLBUserNameGBC;
 import cn.edu.bzu.zw.mytally.view.gbc.LoginJTFPwdGBC;
 import cn.edu.bzu.zw.mytally.view.gbc.LoginJTFUserNameGBC;
 
+/**
+ *  @package cn.edu.bzu.zw.mytally.view
+ *  @project MyTally
+ *	@author zhangwei
+ * 	@time 2017年6月8日 下午3:58:18
+ * 	登录窗口
+ * 
+ */
 public class LoginFrame extends JFrame{
 
-	/**
-	 * 
-	 * 
-	 */
 	private static final long serialVersionUID = 260523489127732335L;
 	
 	private JLabel jlbUserName = null;

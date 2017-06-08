@@ -1,5 +1,13 @@
 package cn.edu.bzu.zw.mytally.bean;
 
+/**
+ *  @package cn.edu.bzu.zw.mytally.bean
+ *  @project MyTally
+ *	@author zhangwei
+ * 	@time 2017年6月8日 下午3:42:59
+ * 	用户实体类
+ * 
+ */
 public class User {
 	private int id;
 	private String username = null;

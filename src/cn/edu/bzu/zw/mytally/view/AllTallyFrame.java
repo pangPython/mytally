@@ -1,6 +1,5 @@
 package cn.edu.bzu.zw.mytally.view;
 
-import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.util.List;
 
@@ -19,6 +18,9 @@ import cn.edu.bzu.zw.mytally.service.TallyService;
   * @Package cn.edu.bzu.zw.mytally.view
   * @Author zw
   * @Time 下午11:18:45
+  * 
+  * 显示所有账单列表  页面窗口
+  * 
   */
 public class AllTallyFrame extends JFrame {
 

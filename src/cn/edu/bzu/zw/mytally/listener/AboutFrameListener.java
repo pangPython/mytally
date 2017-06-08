@@ -10,6 +10,8 @@ import cn.edu.bzu.zw.mytally.view.AboutFrame;
  * @Package cn.edu.bzu.zw.mytally.listener
  * @Author ZhangWei
  * @Time 上午9:59:31
+ * 关于按钮监听器
+ * 
  */
 public class AboutFrameListener implements ActionListener {
 

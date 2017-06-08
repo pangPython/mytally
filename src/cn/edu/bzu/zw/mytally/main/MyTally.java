@@ -5,6 +5,14 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import cn.edu.bzu.zw.mytally.view.LoginFrame;
 import cn.edu.bzu.zw.mytally.view.MainFrame;
 
+/**
+ *  @package cn.edu.bzu.zw.mytally.main
+ *  @project MyTally
+ *	@author zhangwei
+ * 	@time 2017年6月8日 下午3:49:36
+ * 	项目主要入口文件
+ * 
+ */
 public class MyTally {
 	private static LoginFrame loginFrame = null;
 	

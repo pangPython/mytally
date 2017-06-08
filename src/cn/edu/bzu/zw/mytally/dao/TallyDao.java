@@ -4,9 +4,13 @@ import java.util.List;
 
 import cn.edu.bzu.zw.mytally.bean.Tally;
 
+
 /**
- * @author zw
- *	账目数据库操作类
+ *  @package cn.edu.bzu.zw.mytally.dao
+ *  @project MyTally
+ *	@author zhangwei
+ * 	@time 2017年6月8日 下午3:44:49
+ * 账目数据库操作接口
  */
 public interface TallyDao {
 

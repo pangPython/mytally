@@ -10,6 +10,14 @@ import cn.edu.bzu.zw.mytally.bean.Tally;
 import cn.edu.bzu.zw.mytally.dao.BaseDao;
 import cn.edu.bzu.zw.mytally.dao.TallyDao;
 
+/**
+ *  @package cn.edu.bzu.zw.mytally.dao.impl
+ *  @project MyTally
+ *	@author zhangwei
+ * 	@time 2017年6月8日 下午3:45:57
+ * 	账目数据库操作实现类
+ * 
+ */
 public class TallyDaoImpl extends BaseDao implements TallyDao {
 
 	

@@ -8,11 +8,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ *  @package cn.edu.bzu.zw.mytally.view
+ *  @project MyTally
+ *	@author zhangwei
+ * 	@time 2017年6月8日 下午3:53:44
+ * 关于 页面
+ */
 public class AboutFrame extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4036644840318014383L;
 
 	public AboutFrame() throws HeadlessException {

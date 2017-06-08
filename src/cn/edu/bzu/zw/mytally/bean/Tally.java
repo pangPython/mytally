@@ -1,7 +1,15 @@
 package cn.edu.bzu.zw.mytally.bean;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
+/**
+ *  @package cn.edu.bzu.zw.mytally.bean
+ *  @project MyTally
+ *	@author zhangwei
+ * 	@time 2017年6月8日 下午3:42:37
+ * 	账目实体类
+ * 
+ */
 public class Tally {
 	private int id;
 	private String useruuid;
@@ -11,7 +19,7 @@ public class Tally {
 	private int direction;
 	private int amount;
 	private String note;
-	private Date tallytime;
+	private Timestamp tallytime;
 	public int getId() {
 		return id;
 	}
@@ -40,10 +48,10 @@ public class Tally {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	public Date getTallytime() {
+	public Timestamp getTallytime() {
 		return tallytime;
 	}
-	public void setTallytime(Date tallytime) {
+	public void setTallytime(Timestamp tallytime) {
 		this.tallytime = tallytime;
 	}
 

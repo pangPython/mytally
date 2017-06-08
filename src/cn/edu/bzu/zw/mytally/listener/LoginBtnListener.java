@@ -3,12 +3,7 @@ package cn.edu.bzu.zw.mytally.listener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -20,11 +15,13 @@ import cn.edu.bzu.zw.mytally.view.LoginFrame;
 import cn.edu.bzu.zw.mytally.view.MainFrame;
 
 
-
-
 /**
- * @author zw
- *	登录按钮监听器
+ *  @package cn.edu.bzu.zw.mytally.listener
+ *  @project MyTally
+ *	@author zhangwei
+ * 	@time 2017年6月8日 下午3:48:59
+ * 登录按钮监听器
+ * 
  */
 public class LoginBtnListener implements ActionListener {
 	

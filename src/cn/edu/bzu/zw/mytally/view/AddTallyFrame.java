@@ -14,18 +14,17 @@ import javax.swing.JTextField;
 
 import cn.edu.bzu.zw.mytally.listener.JbtnAddListener;
 
-/**
- * @author zw
- * 添加账目窗口
- * 
- *
- */
 
+/**
+ *  @package cn.edu.bzu.zw.mytally.view
+ *  @project MyTally
+ *	@author zhangwei
+ * 	@time 2017年6月8日 下午3:55:12
+ * 添加账目窗口页面
+ * 
+ */
 public class AddTallyFrame extends JFrame {
 
-	/**
-	 * 
-	 */
 	private JPanel addTallyPanel = null;
 	
 	private JLabel jlbAmount = null;//金额

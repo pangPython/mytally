@@ -10,6 +10,7 @@ import cn.edu.bzu.zw.mytally.view.AnalysisFrame;
  * @Package cn.edu.bzu.zw.mytally.listener
  * @Author ZhangWei
  * @Time 上午10:50:01
+ * 统计分析按钮监听器
  */
 public class StatisticalAnalysisListener implements ActionListener {
 

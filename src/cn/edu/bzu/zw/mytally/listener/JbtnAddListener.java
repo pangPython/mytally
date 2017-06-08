@@ -14,6 +14,14 @@ import cn.edu.bzu.zw.mytally.bean.Tally;
 import cn.edu.bzu.zw.mytally.service.TallyService;
 import cn.edu.bzu.zw.mytally.view.AddTallyFrame;
 
+/**
+ *  @package cn.edu.bzu.zw.mytally.listener
+ *  @project MyTally
+ *	@author zhangwei
+ * 	@time 2017年6月8日 下午3:48:20
+ * 	添加账单页面-添加按钮 监听器
+ * 
+ */
 public class JbtnAddListener implements ActionListener {
 
 	private AddTallyFrame addTallyFrame = null;
@@ -27,6 +35,7 @@ public class JbtnAddListener implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		//获取当前时间
 		Date time = new Date(System.currentTimeMillis());
+		System.out.println(time+"===============");
 		//Timestamp timestamp = new Timestamp();	
 		//获取当前用户的UUID
 		String uuid = null;
@@ -47,14 +56,13 @@ public class JbtnAddListener implements ActionListener {
 		tally.setAmount(amount);
 		tally.setDirection(direction);
 		tally.setNote(note);
-		tally.setTallytime(time);
+		tally.setTallytime(null);
 		tally.setUseruuid(uuid);
 		TallyService service = new TallyService();
 		if(service.add(tally)){
 			JOptionPane.showMessageDialog(null, "添加成功！");
 			addTallyFrame.setVisible(false);
 		}else{
-			
 			JOptionPane.showMessageDialog(null, "添加失败！");
 		}
 	}

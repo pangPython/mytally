@@ -10,6 +10,7 @@ import cn.edu.bzu.zw.mytally.view.ExplortExcelFrame;
  * @Package cn.edu.bzu.zw.mytally.listener
  * @Author ZhangWei
  * @Time 下午10:17:07
+ * 导出Excel按钮监听器
  */
 public class ExportExcelListener implements ActionListener {
 

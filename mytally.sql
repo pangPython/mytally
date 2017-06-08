@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-05-16 22:24:04
+Date: 2017-06-08 16:04:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,21 +25,16 @@ CREATE TABLE `tbl_tally` (
   `direction` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
   `note` text,
-  `tallytime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `tallytime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tbl_tally
 -- ----------------------------
-INSERT INTO `tbl_tally` VALUES ('1', 'f65bfd13-7737-461a-8874-67655b16a8c4', '0', '233', '买菜', '2017-05-12 00:00:00');
-INSERT INTO `tbl_tally` VALUES ('2', 'f65bfd13-7737-461a-8874-67655b16a8c4', '1', '200', '彩票', '2017-05-14 00:00:00');
-INSERT INTO `tbl_tally` VALUES ('3', 'f65bfd13-7737-461a-8874-67655b16a8c4', '0', '12', '123', '2017-05-14 15:08:54');
-INSERT INTO `tbl_tally` VALUES ('4', 'f65bfd13-7737-461a-8874-67655b16a8c4', '1', '111', '123', '2017-05-14 15:08:55');
-INSERT INTO `tbl_tally` VALUES ('5', 'f65bfd13-7737-461a-8874-67655b16a8c4', '0', '1', '公交', '2017-05-14 15:08:57');
-INSERT INTO `tbl_tally` VALUES ('6', 'f65bfd13-7737-461a-8874-67655b16a8c4', '0', '123', '逛街', '2017-05-14 15:08:57');
-INSERT INTO `tbl_tally` VALUES ('7', 'f65bfd13-7737-461a-8874-67655b16a8c4', '1', '123', '发传单', '2017-05-14 15:08:57');
-INSERT INTO `tbl_tally` VALUES ('8', 'f65bfd13-7737-461a-8874-67655b16a8c4', '1', '124', '提出', '2017-05-14 15:08:57');
+INSERT INTO `tbl_tally` VALUES ('13', 'f65bfd13-7737-461a-8874-67655b16a8c4', '1', '123', '123', '2017-06-08 15:12:30');
+INSERT INTO `tbl_tally` VALUES ('9', 'f65bfd13-7737-461a-8874-67655b16a8c4', '1', '1', '1111', '2017-06-08 14:58:28');
+INSERT INTO `tbl_tally` VALUES ('12', 'f65bfd13-7737-461a-8874-67655b16a8c4', '1', '11', '1', '2017-06-08 15:10:44');
 
 -- ----------------------------
 -- Table structure for `tbl_user`

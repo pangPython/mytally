@@ -2,7 +2,6 @@ package cn.edu.bzu.zw.mytally.view;
 
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,11 +12,13 @@ import cn.edu.bzu.zw.mytally.listener.AllTallyListener;
 import cn.edu.bzu.zw.mytally.listener.ExportExcelListener;
 import cn.edu.bzu.zw.mytally.listener.StatisticalAnalysisListener;
 
-
-
 /**
- * @author zhangwei
- *
+ *  @package cn.edu.bzu.zw.mytally.view
+ *  @project MyTally
+ *	@author zhangwei
+ * 	@time 2017年6月8日 下午3:58:43
+ * 	主界面
+ * 
  */
 public class MainFrame extends JFrame{
 	private JButton addTally = null;

@@ -4,6 +4,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ *  @package cn.edu.bzu.zw.mytally.dao
+ *  @project MyTally
+ *	@author zhangwei
+ * 	@time 2017年6月8日 下午3:44:24
+ * 	数据库连接类
+ * 
+ */
 public class DB {
 	
 	public static Connection getConnection() {

@@ -3,8 +3,8 @@ package cn.edu.bzu.zw.mytally.utils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -22,6 +22,7 @@ import cn.edu.bzu.zw.mytally.bean.Tally;
  * @Package cn.edu.bzu.zw.mytally.utils
  * @Author ZhangWei
  * @Time 上午7:34:50
+ * 使用apache poi jar包 把数据库中的列表导出为excel
  */
 public class MyPOI {
 
@@ -47,9 +48,6 @@ public class MyPOI {
 			row.createCell(4).setCellValue(createHelper.createRichTextString("描述"));
 			row.createCell(5).setCellValue(createHelper.createRichTextString("时间"));
 
-
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
 			for (int i = 0; i < list.size(); i++) {
 				Row data = sheet.createRow((short) i + 1);
 				Tally tally = list.get(i);
@@ -57,16 +55,21 @@ public class MyPOI {
 				int id = tally.getId();
 				String note = tally.getNote();
 				String userUUID = tally.getUseruuid();
-				Date date = tally.getTallytime();
+				Timestamp date = tally.getTallytime();
 				int amount = tally.getAmount();
 				int direction = tally.getDirection();
 				
 				data.createCell(0).setCellValue(id);
 				data.createCell(1).setCellValue(userUUID);
-				data.createCell(2).setCellValue(direction);
+				if(direction==0){
+					data.createCell(2).setCellValue("支出");
+				}else if (direction == 1) {
+					data.createCell(2).setCellValue("收入");
+				}
 				data.createCell(3).setCellValue(amount);
 				data.createCell(4).setCellValue(note);
-				data.createCell(5).setCellValue(date);
+				String timestamp = (new SimpleDateFormat("yyyy/MM/dd HH:mm:ss")).format(date);
+				data.createCell(5).setCellValue(timestamp);
 
 			}
 
