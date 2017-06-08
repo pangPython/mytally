@@ -90,7 +90,6 @@ public class LoginFrame extends JFrame{
 		
 		loginListener = new LoginBtnListener(this);
 		
-		
 		jbtnLogin.addActionListener(loginListener);
 		jbtnLogin.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.green));
 		gbLayout = new GridBagLayout();

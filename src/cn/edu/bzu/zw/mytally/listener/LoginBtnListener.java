@@ -4,11 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.experimental.theories.Theories;
 
 import cn.edu.bzu.zw.mytally.service.UserService;
 import cn.edu.bzu.zw.mytally.view.LoginFrame;
@@ -24,6 +26,8 @@ import cn.edu.bzu.zw.mytally.view.MainFrame;
  * 
  */
 public class LoginBtnListener implements ActionListener {
+	
+	Logger logger = Logger.getLogger(LoginBtnListener.class.getName());
 	
 	private JTextField jtfUserName;
 	private JTextField jtfPassWord;
@@ -52,6 +56,7 @@ public class LoginBtnListener implements ActionListener {
 			return;
 		}
 		if((uuid = login(jtfUserName.getText(), jtfPassWord.getText())) != null){
+			
 			//设置本地文件存储用户信息
 			File file = new File("temp/user.dat");
 			try {
@@ -59,6 +64,7 @@ public class LoginBtnListener implements ActionListener {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			logger.info(jtfUserName.getText()+" 登录成功 "+System.currentTimeMillis());
 			JOptionPane.showMessageDialog(null, "登录成功");
 			loginFrame.setVisible(false);
 			mainFrame = new MainFrame("个人记账系统");

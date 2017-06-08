@@ -50,24 +50,27 @@ public class MainFrame extends JFrame{
 		super(title);
 		this.setBounds(300,300,800,700);
 		this.setLayout(new GridLayout(0, 3));
-//		ImageIcon addTallyPic = new ImageIcon("/res/dog1.jpg");
 		addTally = new JButton("添加账目");
 		addTallyListener  = new AddTallyListener(); 
 		allTallyListener = new AllTallyListener();
 		addTally.addActionListener(addTallyListener);
 		addTally.setIcon(new ImageIcon("res/dog1.jpg"));
 		allTally = new JButton("账目清单");
+		allTally.setIcon(new ImageIcon("res/dog2.jpg"));
 		allTally.addActionListener(allTallyListener);
 		
 		statisticalAnalysis = new JButton("统计分析");
+		statisticalAnalysis.setIcon(new ImageIcon("res/dog3.jpg"));
 		statisticalAnalysisListener = new StatisticalAnalysisListener();
 		statisticalAnalysis.addActionListener(statisticalAnalysisListener);
 		
 		exportExcel = new JButton("导出表格");
+		exportExcel.setIcon(new ImageIcon("res/dog4.jpg"));
 		excelListener = new ExportExcelListener();
 		exportExcel.addActionListener(excelListener);
 		
 		about = new JButton("关于");
+		about.setIcon(new ImageIcon("res/dog5.jpg"));
 		aboutFrameListener = new AboutFrameListener();
 		about.addActionListener(aboutFrameListener);
 		this.getContentPane().add(addTally);
