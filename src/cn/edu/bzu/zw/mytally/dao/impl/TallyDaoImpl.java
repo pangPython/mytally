@@ -100,8 +100,28 @@ public class TallyDaoImpl extends BaseDao implements TallyDao {
 	@Override
 	public int update(Tally tally) {
 		int result = 0; 
+//		System.out.println(tally.getNote());
         try { 
-        	result = qr.update(conn, "UPDATE tbl_tally SET NAME = ?, age = ?, address = ? WHERE id = ?", "xxx", 23, "ttt", 5); 
+        	result = qr.update(conn, "UPDATE tbl_tally SET amount = ?, direction = ?, note = ? ,tallytime = ? WHERE id = ?", tally.getAmount(), tally.getDirection(), tally.getNote(),tally.getTallytime(),tally.getId()); 
+        } catch (SQLException e) { 
+                e.printStackTrace(); 
+        } finally { 
+                try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+        } 
+        return result; 
+	}
+
+	@Override
+	public int del(int tallyID) {
+		int result = 0; 
+        try { 
+        	
+        	result = qr.update(conn, "delete from tbl_tally WHERE id = ?", tally.getId());
+        	
         } catch (SQLException e) { 
                 e.printStackTrace(); 
         } finally { 

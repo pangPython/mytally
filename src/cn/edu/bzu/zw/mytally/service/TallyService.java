@@ -33,4 +33,10 @@ public class TallyService {
 	public Tally getTallyById(int id) {
 		return tallyDaoImpl.getTallyById(id);
 	}
+	public int update(Tally tally) {
+		return tallyDaoImpl.update(tally);
+	}
+	public int del(int tallyID) {
+		return tallyDaoImpl.del(tallyID);
+	}
 }

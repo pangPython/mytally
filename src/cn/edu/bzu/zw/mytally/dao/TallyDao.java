@@ -53,4 +53,10 @@ public interface TallyDao {
 	 * @return
 	 */
 	public int update(Tally tally);
+	/**
+	 * 删除收支
+	 * @param tallyID
+	 * @return
+	 */
+	public int del(int tallyID);
 }
