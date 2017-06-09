@@ -95,7 +95,7 @@ public class AddTallyFrame extends JFrame {
 		jbtnAddListener = new JbtnAddListener(this);
 		jbtnAdd.addActionListener(jbtnAddListener);
 		
-		this.setBounds(600, 400,500,500);
+		this.setSize(500,500);
 		addTallyPanel.add(jlbAmount);
 		addTallyPanel.add(jtfAmount);
 		addTallyPanel.add(jlbDirection);

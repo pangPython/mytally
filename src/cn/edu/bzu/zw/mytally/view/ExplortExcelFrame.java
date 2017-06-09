@@ -26,13 +26,15 @@ public class ExplortExcelFrame extends JFrame {
 	public ExplortExcelFrame() throws HeadlessException {
 		super();
 	}
-
+	//构造方法
 	public ExplortExcelFrame(String title) throws HeadlessException {
 		super(title);
 		tallyService = new TallyService();
 		List<Tally> list = new ArrayList<>();
+		//获取数据库所有的账单列表
 		list = tallyService.getTallys();
 		String path = null;
+		//导出Excel
 		if((path = MyPOI.exportList2Excel(list))!=null){
 			JOptionPane.showMessageDialog(null, "请查看项目根目录下："+path);
 		}else{

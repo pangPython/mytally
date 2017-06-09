@@ -1,6 +1,9 @@
 package cn.edu.bzu.zw.mytally.view;
 
+import java.awt.Dimension;
 import java.awt.HeadlessException;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -10,18 +13,20 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
+import org.apache.poi.hwpf.usermodel.Table;
+
 import cn.edu.bzu.zw.mytally.bean.Tally;
 import cn.edu.bzu.zw.mytally.service.TallyService;
 
 /**
-  * @Project MyTally
-  * @Package cn.edu.bzu.zw.mytally.view
-  * @Author zw
-  * @Time 下午11:18:45
-  * 
-  * 显示所有账单列表  页面窗口
-  * 
-  */
+ * @Project MyTally
+ * @Package cn.edu.bzu.zw.mytally.view
+ * @Author zw
+ * @Time 下午11:18:45
+ * 
+ *   显示所有账单列表 页面窗口
+ * 
+ */
 public class AllTallyFrame extends JFrame {
 
 	private List<Tally> list = null;
@@ -29,28 +34,20 @@ public class AllTallyFrame extends JFrame {
 	private JPanel jpanel;
 	private JScrollPane jScrollPane;
 	private JTable jtable;
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4029907156241608703L;
-
-
 
 	public AllTallyFrame(String title) throws HeadlessException {
 		super(title);
 		tallyService = new TallyService();
 		list = tallyService.getTallys();
 		jpanel = new JPanel();
+		//给jtable绑定数据模型
 		TableModel dataModel = new AbstractTableModel() {
-	       /**
-			 * 
-			
-			 */
-			
-			private static final long serialVersionUID = 1L;
-			//设置表头
+		private static final long serialVersionUID = 1L;
+
+			// 设置表头
 			@Override
-		public String getColumnName(int i) {
+			public String getColumnName(int i) {
 				String name = "";
 				switch (i) {
 				case 0:
@@ -72,26 +69,33 @@ public class AllTallyFrame extends JFrame {
 					name = "时间";
 					break;
 				}
-			return name;
-		}
-			//列数
-			public int getColumnCount() { return 5; }
-			//行数
-	          public int getRowCount() { return list.size();}
-	          //按二维数组格式取值
-	          public Object getValueAt(int row, int col) {
-	        	  Object obj = null;
-	        	  switch (col) {
+				return name;
+			}
+			// 列数
+			public int getColumnCount() {
+				return 6;
+			}
+			// 行数
+			public int getRowCount() {
+				return list.size();
+			}
+			// 按二维数组格式取值
+			public Object getValueAt(int row, int col) {
+				Object obj = null;
+				switch (col) {
 				case 0:
-					System.out.println("row:"+row+" col:"+col);
 					obj = list.get(row).getId();
 					break;
-
 				case 1:
 					obj = list.get(row).getUseruuid();
 					break;
 				case 2:
-					obj = list.get(row).getDirection();
+					if(list.get(row).getDirection() == 0){
+						obj = "支出";
+					}
+					if(list.get(row).getDirection() == 1){
+						obj = "收入";
+					}
 					break;
 				case 3:
 					obj = list.get(row).getAmount();
@@ -103,19 +107,57 @@ public class AllTallyFrame extends JFrame {
 					obj = list.get(row).getTallytime();
 					break;
 				}
-	        	  return obj; 
-	        	  
-	          }
-	      };
-	      jtable = new JTable(dataModel);
+				return obj;
+
+			}
+		};
+		//把数据源与jtable绑定
+		jtable = new JTable(dataModel);
 		jtable.setFillsViewportHeight(true);
+		jtable.setPreferredScrollableViewportSize(new Dimension(800,800));
+		
+		jtable.addMouseListener(new MouseListener() {
+			
+			private EditTallyFrame editTallyFrame;
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.out.println("======"+jtable.getValueAt(jtable.getSelectedRow(), 0));
+				int tallyID = (int) jtable.getValueAt(jtable.getSelectedRow(), 0);
+				editTallyFrame = new EditTallyFrame("修改收支",tallyID);
+				editTallyFrame.setVisible(true);
+			}
+		});
+		
+		//设置可滚动
 		jScrollPane = new JScrollPane(jtable);
 		jpanel.add(jScrollPane);
-		this.setSize(600,600);
+		this.setSize(900, 900);
 		this.add(jpanel);
 	}
-	
-	
-	
 
 }

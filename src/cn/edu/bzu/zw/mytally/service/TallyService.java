@@ -30,4 +30,7 @@ public class TallyService {
 	public List<Tally> getinList(String uid){
 		return tallyDaoImpl.getinList(uid);
 	}
+	public Tally getTallyById(int id) {
+		return tallyDaoImpl.getTallyById(id);
+	}
 }

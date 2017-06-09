@@ -47,4 +47,10 @@ public interface TallyDao {
 	 * @return
 	 */
 	public List<Tally> getoutList(String uid);
+	/**
+	 *更新收支 
+	 * @param tally
+	 * @return
+	 */
+	public int update(Tally tally);
 }

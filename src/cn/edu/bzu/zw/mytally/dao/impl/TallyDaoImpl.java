@@ -4,9 +4,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import cn.edu.bzu.zw.mytally.bean.Tally;
+import cn.edu.bzu.zw.mytally.bean.User;
 import cn.edu.bzu.zw.mytally.dao.BaseDao;
 import cn.edu.bzu.zw.mytally.dao.TallyDao;
 
@@ -23,9 +25,12 @@ public class TallyDaoImpl extends BaseDao implements TallyDao {
 	
 	
 	
+	private Tally tally;
+
 	public TallyDaoImpl() {
 	}
 
+	//把账单写入数据库
 	@Override
 	public boolean addTally(Tally tally) {
 		boolean rtn = false;
@@ -57,7 +62,13 @@ public class TallyDaoImpl extends BaseDao implements TallyDao {
 
 	@Override
 	public Tally getTallyById(int id) {
-		return null;
+		sql  = "select * from tbl_tally where id = ?";
+		try {
+			tally = qr.query(conn, sql, new BeanHandler<>(Tally.class),id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return tally;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -84,6 +95,23 @@ public class TallyDaoImpl extends BaseDao implements TallyDao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public int update(Tally tally) {
+		int result = 0; 
+        try { 
+        	result = qr.update(conn, "UPDATE tbl_tally SET NAME = ?, age = ?, address = ? WHERE id = ?", "xxx", 23, "ttt", 5); 
+        } catch (SQLException e) { 
+                e.printStackTrace(); 
+        } finally { 
+                try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+        } 
+        return result; 
 	}
 
 }

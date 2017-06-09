@@ -2,13 +2,10 @@ package cn.edu.bzu.zw.mytally.view;
 
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
-import java.awt.Insets;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 import cn.edu.bzu.zw.mytally.listener.AboutFrameListener;
 import cn.edu.bzu.zw.mytally.listener.AddTallyListener;

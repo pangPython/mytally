@@ -1,5 +1,6 @@
 package cn.edu.bzu.zw.mytally.view;
 
+import java.awt.Color;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 
@@ -34,6 +35,7 @@ public class LoginFrame extends JFrame{
 	private JLabel jlbPassWord = null;
 	private LoginJLBPassWordGBC JLBPwdGBC = null;
 	
+	
 	private JTextField jtfUserName = null;
 	public JTextField getJtfUserName() {
 		return jtfUserName;
@@ -65,7 +67,6 @@ public class LoginFrame extends JFrame{
 
 	private LoginBtnListener loginListener = null;
 	
-	
 	public LoginFrame() throws HeadlessException {
 		super();
 	}
@@ -94,7 +95,11 @@ public class LoginFrame extends JFrame{
 		jbtnLogin.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.green));
 		gbLayout = new GridBagLayout();
 		
+	
+        
 		this.setLayout(gbLayout);
+		
+		this.getContentPane().setBackground(new Color(0,204,255));
 		
 		this.add(jlbUserName,JLBUserNameGBC);
 		this.add(jtfUserName,JTFUserNameGBC);
