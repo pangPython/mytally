@@ -4,8 +4,10 @@ import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Timestamp;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -40,6 +42,10 @@ public class EditTallyFrame extends JFrame{
 	private JLabel jlb_time = null;
 	private JButton jbtn_update = null;
 	private JButton jbtn_del = null;
+	private JComboBox jcbDirection = null;
+	
+	private DateChooseJButton dateChooseJButton = null;
+	
 	public EditTallyFrame() throws HeadlessException {
 		super();
 	}
@@ -57,17 +63,28 @@ public class EditTallyFrame extends JFrame{
 		jlb_time = new JLabel("时间：");
 		jbtn_update = new JButton("保存");
 		jbtn_del = new JButton("删除");
+		dateChooseJButton = new DateChooseJButton();
+		
 		amount.setText(tally.getAmount()+"");
 		note.setText(tally.getNote());
+		
+		jcbDirection = new JComboBox();
+		jcbDirection.addItem("收入");
+		jcbDirection.addItem("支出");
+		
+		if(tally.getDirection()==0){
+			jcbDirection.setSelectedIndex(1);
+		}
+		
 		this.setLayout(new GridLayout(4, 2));
 		this.add(jlb_amount);
 		this.add(amount);
 		this.add(jlb_note);
 		this.add(note);
 		this.add(jlb_shouzhi);
-		this.add(jlb_shouzhi);
+		this.add(jcbDirection);
 		this.add(jlb_time);
-		this.add(jlb_time);
+		this.add(dateChooseJButton);
 		this.add(jbtn_update);
 		this.add(jbtn_del);
 		this.setSize(300,300);
@@ -77,6 +94,14 @@ public class EditTallyFrame extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				tally.setAmount(Integer.parseInt(amount.getText()));
 				tally.setNote(note.getText());
+				if(jcbDirection.getSelectedItem().equals("收入")){
+					tally.setDirection(1);
+				}
+				if(jcbDirection.getSelectedItem().equals("支出")){
+					tally.setDirection(0);
+				}
+				tally.setTallytime(new Timestamp(dateChooseJButton.getDate().getTime()));
+				
 				if(tallyService.update(tally)>0){
 					JOptionPane.showMessageDialog(null, "更新成功！!");
 				}else{
@@ -95,6 +120,7 @@ public class EditTallyFrame extends JFrame{
 				}
 			}
 		});
+		this.pack();
 	}
 
 	

@@ -105,12 +105,6 @@ public class TallyDaoImpl extends BaseDao implements TallyDao {
         	result = qr.update(conn, "UPDATE tbl_tally SET amount = ?, direction = ?, note = ? ,tallytime = ? WHERE id = ?", tally.getAmount(), tally.getDirection(), tally.getNote(),tally.getTallytime(),tally.getId()); 
         } catch (SQLException e) { 
                 e.printStackTrace(); 
-        } finally { 
-                try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
         } 
         return result; 
 	}
