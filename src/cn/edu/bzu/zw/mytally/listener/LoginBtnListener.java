@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.experimental.theories.Theories;
 
 import cn.edu.bzu.zw.mytally.service.UserService;
 import cn.edu.bzu.zw.mytally.view.LoginFrame;
@@ -82,8 +81,6 @@ public class LoginBtnListener implements ActionListener {
 	}
 	//登录方法
 	private String login(String username,String password) {
-		System.out.println("UserName:"+username);
-		System.out.println("Password:"+password);
 		UserService userService = new UserService();
 		String uuid = null;
 		if(userService.login(username, password) != null){

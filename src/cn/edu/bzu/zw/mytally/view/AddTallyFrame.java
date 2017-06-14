@@ -35,7 +35,19 @@ public class AddTallyFrame extends JFrame {
 	private JTextField jtfNote = null;
 	private JButton jbtnAdd = null;//添加账目按钮
 	private JComboBox jcbDirection = null;
-	GridLayout gridLayout = null;
+	private GridLayout gridLayout = null;
+	private JLabel jlb_time = null; 
+	private JLabel jlb_blank = null;
+	
+	private DateChooseJButton dateChooseJButton = null;
+	public DateChooseJButton getDateChooseJButton() {
+		return dateChooseJButton;
+	}
+
+	public void setDateChooseJButton(DateChooseJButton dateChooseJButton) {
+		this.dateChooseJButton = dateChooseJButton;
+	}
+
 
 	private JbtnAddListener jbtnAddListener;
 	private static final long serialVersionUID = -4036644840318014383L;
@@ -75,14 +87,27 @@ public class AddTallyFrame extends JFrame {
 		super(title);
 		
 		jlbAmount = new JLabel("金额：");
+		jlbAmount.setBackground(new Color(0,204,255));
+		jlbAmount.setOpaque(true);
 		jtfAmount = new JTextField(5);
 		jlbDirection = new JLabel("出/入：");
+		jlbDirection.setBackground(new Color(0,204,255));
+		jlbDirection.setOpaque(true);
 		jtfDirection = new JTextField(5);
 		jlbNote = new JLabel("备注：");
+		jlbNote.setBackground(new Color(0,204,255));
+		jlbNote.setOpaque(true);
 		jtfNote = new JTextField(8);
 		jbtnAdd = new JButton("添加");
 		
+		jlb_time = new JLabel("时间：");
+		jlb_time.setBackground(new Color(0,204,255));
+		jlb_time.setOpaque(true);
+		jlb_blank = new JLabel();
+		jlb_blank.setBackground(new Color(0,204,255));
+		jlb_blank.setOpaque(true);
 		
+		dateChooseJButton = new DateChooseJButton();
 		jcbDirection = new JComboBox();
 		jcbDirection.addItem("收入");
 		jcbDirection.addItem("支出");
@@ -95,14 +120,16 @@ public class AddTallyFrame extends JFrame {
 		jbtnAddListener = new JbtnAddListener(this);
 		jbtnAdd.addActionListener(jbtnAddListener);
 		
-		this.setSize(500,500);
+		this.setBounds(500,500,500,500);
 		addTallyPanel.add(jlbAmount);
 		addTallyPanel.add(jtfAmount);
 		addTallyPanel.add(jlbDirection);
 		addTallyPanel.add(jcbDirection);
-		//addTallyPanel.add(jtfDirection);
 		addTallyPanel.add(jlbNote);
 		addTallyPanel.add(jtfNote);
+		addTallyPanel.add(jlb_time);
+		addTallyPanel.add(dateChooseJButton);
+		addTallyPanel.add(jlb_blank);
 		addTallyPanel.add(jbtnAdd);
 		this.add(addTallyPanel);
 //		this.pack();

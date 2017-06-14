@@ -1,5 +1,6 @@
 package cn.edu.bzu.zw.mytally.view;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -55,12 +56,20 @@ public class EditTallyFrame extends JFrame{
 		//根据id查到tally，把数据填入frame
 		Tally tally = tallyService.getTallyById(tallyID);
 		//点击保存关闭当前窗口，刷新上一个窗口
-		amount = new JTextField(10);
-		note = new JTextField(10);
+		amount = new JTextField(8);
+		note = new JTextField(8);
 		jlb_amount = new JLabel("金额：");
+		jlb_amount.setBackground(new Color(0,204,255));
+		jlb_amount.setOpaque(true);
 		jlb_note = new JLabel("备注：");
+		jlb_note.setBackground(new Color(0,204,255));
+		jlb_note.setOpaque(true);
 		jlb_shouzhi = new JLabel("收支：");
+		jlb_shouzhi.setBackground(new Color(0,204,255));
+		jlb_shouzhi.setOpaque(true);
 		jlb_time = new JLabel("时间：");
+		jlb_time.setBackground(new Color(0,204,255));
+		jlb_time.setOpaque(true);
 		jbtn_update = new JButton("保存");
 		jbtn_del = new JButton("删除");
 		dateChooseJButton = new DateChooseJButton();
@@ -76,7 +85,7 @@ public class EditTallyFrame extends JFrame{
 			jcbDirection.setSelectedIndex(1);
 		}
 		
-		this.setLayout(new GridLayout(4, 2));
+		this.setLayout(new GridLayout(0, 2));
 		this.add(jlb_amount);
 		this.add(amount);
 		this.add(jlb_note);
@@ -120,7 +129,7 @@ public class EditTallyFrame extends JFrame{
 				}
 			}
 		});
-		this.pack();
+//		this.pack();
 	}
 
 	

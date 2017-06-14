@@ -17,7 +17,6 @@ public class LoginJBTNLoginGBC extends BaseGBC {
 		this.gridy = 3;
 		this.gridwidth = 1;
 		this.gridheight = 1;
-		
 	}
 		
 }

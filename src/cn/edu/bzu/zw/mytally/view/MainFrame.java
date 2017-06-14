@@ -1,5 +1,6 @@
 package cn.edu.bzu.zw.mytally.view;
 
+import java.awt.Button;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
 
@@ -27,6 +28,7 @@ public class MainFrame extends JFrame{
 	private JButton statisticalAnalysis = null;//统计分析
 	private JButton exportExcel = null;//导出excel
 	private JButton about;
+	private JButton blank;
 	
 	
 	private AddTallyListener addTallyListener;
@@ -68,6 +70,10 @@ public class MainFrame extends JFrame{
 		
 		about = new JButton("关于");
 		about.setIcon(new ImageIcon("res/dog5.jpg"));
+		
+		blank = new JButton();
+		blank.setIcon(new ImageIcon("res/dog6.jpg"));
+		
 		aboutFrameListener = new AboutFrameListener();
 		about.addActionListener(aboutFrameListener);
 		this.getContentPane().add(addTally);
@@ -75,6 +81,7 @@ public class MainFrame extends JFrame{
 		this.getContentPane().add(statisticalAnalysis);
 		this.getContentPane().add(exportExcel);
 		this.getContentPane().add(about);
+		this.getContentPane().add(blank);
 		
 	}
 	

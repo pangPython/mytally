@@ -2,6 +2,7 @@ package cn.edu.bzu.zw.mytally.view;
 
 import java.awt.Color;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.HeadlessException;
 
 import javax.swing.JButton;
@@ -34,7 +35,7 @@ public class LoginFrame extends JFrame{
 	private LoginJLBUserNameGBC JLBUserNameGBC = null;
 	private JLabel jlbPassWord = null;
 	private LoginJLBPassWordGBC JLBPwdGBC = null;
-	
+	private JLabel jlb_blank = null;
 	
 	private JTextField jtfUserName = null;
 	public JTextField getJtfUserName() {
@@ -75,14 +76,14 @@ public class LoginFrame extends JFrame{
 		super(title);
 		jlbUserName = new JLabel("用户名:");
 		jlbPassWord = new JLabel("密码:");
-		jtfUserName = new JTextField(8);
-		jtfPassWord = new JTextField(8);
+		jtfUserName = new JTextField(10);
+		jtfPassWord = new JTextField(10);
 		jbtnLogin = new JButton("登录");
 		
 		jtfUserName.setText("admin");
 		jtfPassWord.setText("admin");
 		
-		
+		jlb_blank = new JLabel();
 		JLBUserNameGBC = new LoginJLBUserNameGBC();
 		JLBPwdGBC = new LoginJLBPassWordGBC();
 		JTFUserNameGBC = new LoginJTFUserNameGBC();
@@ -94,21 +95,16 @@ public class LoginFrame extends JFrame{
 		jbtnLogin.addActionListener(loginListener);
 		jbtnLogin.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.green));
 		gbLayout = new GridBagLayout();
-		
-	
-        
-		this.setLayout(gbLayout);
-		
+
+		this.setLayout(new GridLayout(0, 2));
 		this.getContentPane().setBackground(new Color(0,204,255));
-		
-		this.add(jlbUserName,JLBUserNameGBC);
-		this.add(jtfUserName,JTFUserNameGBC);
-		this.add(jlbPassWord,JLBPwdGBC);
-		this.add(jtfPassWord,JTFPwdGBC);
-		this.add(jbtnLogin,JBTNLoginGBC);
-		
-		this.setBounds(200, 200, 400, 400);
-		
+		this.add(jlbUserName);
+		this.add(jtfUserName);
+		this.add(jlbPassWord);
+		this.add(jtfPassWord);
+		this.add(jlb_blank);
+		this.add(jbtnLogin);
+		this.setBounds(200, 200, 500, 300);
 	}
 	
 	

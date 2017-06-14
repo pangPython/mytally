@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
@@ -56,7 +57,7 @@ public class JbtnAddListener implements ActionListener {
 		tally.setDirection(direction);
 		tally.setNote(note);
 		//账单添加时间 传入null，数据库自动写入当前时间戳
-		tally.setTallytime(null);
+		tally.setTallytime(new Timestamp(addTallyFrame.getDateChooseJButton().getDate().getTime()));
 		tally.setUseruuid(uuid);
 		TallyService service = new TallyService();
 		if(service.add(tally)){
